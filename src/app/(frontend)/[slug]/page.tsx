@@ -44,10 +44,10 @@ export default async function Page({ params }: Args) {
   })
     const data = await payload.find({
     collection: 'pages',
-    where:{slug: {equals: slug}},
-    limit: 1
+    // where:{slug: {equals: slug}},
+    // limit: 1
   })
-    console.log(data.docs[0]);
+    console.log(data);
     return (
         <div className='page'>
             <h1>Dynamic Page for {slug}</h1>
