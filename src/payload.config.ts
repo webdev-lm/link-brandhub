@@ -10,6 +10,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Pages } from './collections/Pages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,7 +22,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -31,6 +32,15 @@ export default buildConfig({
     url: process.env.DATABASE_URI || '',
   }),
   sharp,
+  folders: {
+    collectionOverrides: [
+      async ({ collection }) => {
+        return collection
+      },
+    ], 
+    fieldName: 'folder', 
+    slug: 'payload-folders', 
+  },
   plugins: [
     payloadCloudPlugin(),
     vercelBlobStorage({
