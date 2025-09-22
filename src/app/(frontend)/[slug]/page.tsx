@@ -2,13 +2,14 @@ import config from '@payload-config'
 import { getPayload } from 'payload'
 
 const SectionFull = (props:any) => {
- 
+    console.log(props.imageFullWidth);
     return(<div className='section-full' style={{width: '100%', padding: '10px'}}>
         <img src={props.imageFullWidth?.url} alt="Full Width" />
     </div>)
 }
 
 const SectionHalf = (props:any) => {
+     console.log(props.imageOne, props.imageTwo);
     return(<div className='section-half' style={{display: 'flex'}}>
         <img src={props.imageOne?.url} alt="Image One" style={{width: '50%', padding: '10px'}} />
         <img src={props.imageTwo?.url} alt="Image Two" style={{width: '50%', padding: '10px'}} />
